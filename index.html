@@ -424,7 +424,580 @@
 </main>
 
 <footer>
-    <div class="container">
+    <div class="container">```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07172f">
+    <title>Saffet Aydın | Kişisel Web Sitesi</title>
+
+    <style>
+        :root {
+            --lacivert: #07172f;
+            --lacivert2: #0b2040;
+            --mavi: #2997ff;
+            --beyaz: #f4f8ff;
+            --gri: #b8c7dc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--lacivert);
+            color: var(--beyaz);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ÜST MENÜ */
+
+        .ust-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 82px;
+            display: flex;
+            align-items: center;
+            padding: 0 35px;
+            background: rgba(7, 23, 47, 0.94);
+            border-bottom: 1px solid rgba(41, 151, 255, 0.2);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .menu-dugme {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 7px;
+            padding: 8px;
+        }
+
+        .menu-dugme span {
+            width: 30px;
+            height: 3px;
+            border-radius: 5px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .menu-dugme:hover span {
+            background: var(--mavi);
+        }
+
+        .logo-yazi {
+            margin-left: auto;
+            font-size: 17px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            color: var(--beyaz);
+        }
+
+        .logo-yazi span {
+            color: var(--mavi);
+        }
+
+        /* AÇILAN MENÜ */
+
+        .menu-paneli {
+            position: fixed;
+            top: 92px;
+            left: 25px;
+            width: 285px;
+            padding: 18px;
+            background: #0a1d38;
+            border: 1px solid rgba(41, 151, 255, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+            z-index: 999;
+            display: none;
+        }
+
+        .menu-paneli.acik {
+            display: block;
+            animation: acilma 0.25s ease;
+        }
+
+        @keyframes acilma {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-paneli a {
+            display: block;
+            padding: 12px 14px;
+            border-radius: 8px;
+            color: var(--gri);
+            transition: 0.25s;
+        }
+
+        .menu-paneli a:hover {
+            background: rgba(41, 151, 255, 0.13);
+            color: white;
+            padding-left: 22px;
+        }
+
+        /* GENEL BÖLÜMLER */
+
+        section {
+            padding: 100px 8%;
+            scroll-margin-top: 75px;
+        }
+
+        .baslik {
+            font-size: clamp(30px, 4vw, 43px);
+            margin-bottom: 25px;
+        }
+
+        .baslik span {
+            color: var(--mavi);
+        }
+
+        .aciklama {
+            color: var(--gri);
+            max-width: 750px;
+        }
+
+        /* ANA SAYFA */
+
+        .ana-sayfa {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            padding-top: 125px;
+            background:
+                radial-gradient(ellipse at 80% 35%,
+                    rgba(26, 100, 180, 0.16), transparent 42%),
+                var(--lacivert);
+        }
+
+        .ana-icerik {
+            max-width: 750px;
+        }
+
+        .etiket {
+            color: var(--mavi);
+            letter-spacing: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .ana-sayfa h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.15;
+            margin: 18px 0;
+        }
+
+        .ana-sayfa h1 span {
+            color: var(--mavi);
+        }
+
+        .ana-sayfa p {
+            color: var(--gri);
+            max-width: 600px;
+            font-size: 17px;
+        }
+
+        .butonlar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 32px;
+        }
+
+        .buton {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--mavi);
+            transition: 0.3s;
+        }
+
+        .buton.ana {
+            background: var(--mavi);
+            color: #06152b;
+            font-weight: bold;
+        }
+
+        .buton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 22px rgba(41, 151, 255, 0.25);
+        }
+
+        .logo-kutu {
+            min-width: 230px;
+            width: 290px;
+            height: 290px;
+            border: 1px solid rgba(41, 151, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a2040;
+            box-shadow: 0 0 55px rgba(41, 151, 255, 0.12);
+            overflow: hidden;
+        }
+
+        .logo-kutu img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-yok {
+            font-size: 66px;
+            font-family: Georgia, serif;
+            color: var(--mavi);
+        }
+
+        /* KARTLAR */
+
+        .bolum-alternatif {
+            background: var(--lacivert2);
+            border-top: 1px solid rgba(41, 151, 255, 0.15);
+            border-bottom: 1px solid rgba(41, 151, 255, 0.15);
+        }
+
+        .kartlar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .kart {
+            background: #0a1c36;
+            padding: 25px;
+            border: 1px solid rgba(130, 170, 220, 0.15);
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .kart:hover {
+            transform: translateY(-5px);
+            border-color: var(--mavi);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .kart h3 {
+            color: var(--mavi);
+            margin-bottom: 10px;
+        }
+
+        .kart p {
+            color: var(--gri);
+        }
+
+        /* İLETİŞİM */
+
+        .iletisim-formu {
+            max-width: 650px;
+            margin-top: 25px;
+        }
+
+        .iletisim-formu input,
+        .iletisim-formu textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 14px;
+            border: 1px solid #294363;
+            border-radius: 9px;
+            background: #0a1c36;
+            color: white;
+            font: inherit;
+            outline: none;
+        }
+
+        .iletisim-formu input:focus,
+        .iletisim-formu textarea:focus {
+            border-color: var(--mavi);
+        }
+
+        .iletisim-formu textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .iletisim-formu button {
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .eposta {
+            color: var(--mavi);
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--gri);
+            background: #051126;
+            border-top: 1px solid rgba(41, 151, 255, 0.2);
+        }
+
+        @media (max-width: 800px) {
+            .ana-sayfa {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                justify-content: center;
+                padding-top: 125px;
+            }
+
+            .logo-kutu {
+                width: 170px;
+                height: 170px;
+                min-width: 170px;
+                align-self: center;
+            }
+
+            section {
+                padding: 85px 7%;
+            }
+
+            .ust-menu {
+                padding: 0 20px;
+            }
+
+            .menu-paneli {
+                left: 15px;
+                width: min(285px, calc(100% - 30px));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="ust-menu">
+        <button
+            class="menu-dugme"
+            id="menuDugme"
+            aria-label="Menüyü aç veya kapat"
+            aria-expanded="false"
+            aria-controls="menuPaneli">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <a href="#anasayfa" class="logo-yazi">SAFFET <span>AYDIN</span></a>
+    </header>
+
+    <nav class="menu-paneli" id="menuPaneli" aria-label="Ana menü">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#is-ilanlari">İş İlanları</a>
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#tecrübeler">Tecrübeler</a>
+        <a href="#kurulus">Kuruluş</a>
+        <a href="#yetenekler">Yetenekler</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+
+    <main>
+        <section class="ana-sayfa" id="anasayfa">
+            <div class="ana-icerik">
+                <div class="etiket">KİŞİSEL WEB SİTEM</div>
+
+                <h1>Merhaba, ben<br><span>Saffet Aydın.</span></h1>
+
+                <p>
+                    Yazılım, teknoloji ve yaratıcılık dünyasında kendimi
+                    geliştiriyorum. Yeni şeyler öğrenmeyi, fikirlerimi
+                    projelere dönüştürmeyi ve geleceğe değer katmayı seviyorum.
+                </p>
+
+                <div class="butonlar">
+                    <a class="buton ana" href="#iletisim">Benimle İletişime Geç</a>
+                    <a class="buton" href="#hakkimda">Beni Tanı</a>
+                </div>
+            </div>
+
+            <div class="logo-kutu">
+                <img
+                    src="logo.png"
+                    alt="Saffet Aydın SA logosu"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-yok" style="display:none;">SA</div>
+            </div>
+        </section>
+
+        <section id="is-ilanlari" class="bolum-alternatif">
+            <h2 class="baslik">İş <span>İlanları</span></h2>
+            <p class="aciklama">
+                İş fırsatları ve kariyer hedeflerimle ilgili bilgileri burada
+                paylaşacağım. İlgili bir fırsatınız varsa benimle iletişime geçebilirsiniz.
+            </p>
+            <div class="kartlar">
+                <article class="kart">
+                    <h3>Kariyer Fırsatları</h3>
+                    <p>Yazılım ve teknoloji alanındaki fırsatlarla ilgileniyorum.</p>
+                </article>
+                <article class="kart">
+                    <h3>İş Birliği</h3>
+                    <p>Projeler ve yeni fikirler için iletişime açık bir alan.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="hakkimda">
+            <h2 class="baslik">Hakkım<span>da</span></h2>
+            <p class="aciklama">
+                Merhaba, ben Saffet Aydın. Bilgisayar Programcılığı alanında
+                eğitim alıyor; yazılım ve teknoloji konularında kendimi
+                geliştiriyorum. Amacım öğrendiklerimi gerçek projelere
+                dönüştürmek, deneyim kazanmak ve sürekli ilerlemek.
+            </p>
+        </section>
+
+        <section id="tecrübeler" class="bolum-alternatif">
+            <h2 class="baslik">Tecrü<span>beler</span></h2>
+            <div class="kartlar">
+                <article class="kart">
+                    <h3>Web Tasarımı</h3>
+                    <p>HTML ve CSS ile web sayfaları hazırlamayı öğreniyorum.</p>
+                </article>
+                <article class="kart">
+                    <h3>Programlama</h3>
+                    <p>Algoritma mantığı ve programlama temelleri üzerinde çalışıyorum.</p>
+                </article>
+                <article class="kart">
+                    <h3>Kişisel Projeler</h3>
+                    <p>Yeni bilgilerimi uygulamak için projeler geliştiriyorum.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="kurulus">
+            <h2 class="baslik">Kuruluş <span>ve Projeler</span></h2>
+            <p class="aciklama">
+                Bu bölüm gelecekte kuracağım girişimler, üzerinde çalışacağım
+                projeler ve hayata geçirmek istediğim fikirler için ayrılmıştır.
+            </p>
+        </section>
+
+        <section id="yetenekler" class="bolum-alternatif">
+            <h2 class="baslik">Yetenek<span>ler</span></h2>
+            <div class="kartlar">
+                <article class="kart">
+                    <h3>HTML</h3>
+                    <p>Web sayfalarının temel yapısını oluşturma.</p>
+                </article>
+                <article class="kart">
+                    <h3>CSS</h3>
+                    <p>Sayfa tasarımı, renkler ve duyarlı arayüzler.</p>
+                </article>
+                <article class="kart">
+                    <h3>Programlama</h3>
+                    <p>Algoritma kurma ve yazılım mantığını geliştirme.</p>
+                </article>
+                <article class="kart">
+                    <h3>Teknoloji</h3>
+                    <p>Yeni araçları keşfetme ve öğrenmeye devam etme.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="iletisim">
+            <h2 class="baslik">Benimle <span>İletişime Geç</span></h2>
+            <p class="aciklama">
+                Bir fikrin, iş teklifin veya proje önerin varsa mesaj gönderebilirsin.
+            </p>
+
+            <form class="iletisim-formu" id="iletisimFormu">
+                <input type="text" id="isim" placeholder="Adın soyadın" required>
+                <input type="email" id="eposta" placeholder="E-posta adresin" required>
+                <textarea id="mesaj" placeholder="Mesajını buraya yaz..." required></textarea>
+                <button type="submit" class="buton ana">Mesajı Gönder</button>
+            </form>
+
+            <a class="eposta" href="mailto:saffetay136@gmail.com">
+                saffetay136@gmail.com
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        © <span id="yil"></span> Saffet Aydın — Tüm hakları saklıdır.
+    </footer>
+
+    <script>
+        const menuDugme = document.getElementById("menuDugme");
+        const menuPaneli = document.getElementById("menuPaneli");
+
+        menuDugme.addEventListener("click", function () {
+            const acik = menuPaneli.classList.toggle("acik");
+            menuDugme.setAttribute("aria-expanded", acik);
+        });
+
+        document.querySelectorAll(".menu-paneli a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                menuPaneli.classList.remove("acik");
+                menuDugme.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        document.addEventListener("click", function (event) {
+            if (
+                !menuPaneli.contains(event.target) &&
+                !menuDugme.contains(event.target)
+            ) {
+                menuPaneli.classList.remove("acik");
+                menuDugme.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.getElementById("yil").textContent = new Date().getFullYear();
+
+        document.getElementById("iletisimFormu").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const isim = document.getElementById("isim").value.trim();
+            const eposta = document.getElementById("eposta").value.trim();
+            const mesaj = document.getElementById("mesaj").value.trim();
+
+            const konu = encodeURIComponent("Web sitesinden mesaj - " + isim);
+            const govde = encodeURIComponent(
+                "Gönderen: " + isim +
+                "\nE-posta: " + eposta +
+                "\n\nMesaj:\n" + mesaj
+            );
+
+            window.location.href =
+                "mailto:saffetay136@gmail.com?subject=" + konu + "&body=" + govde;
+        });
+    </script>
+
+</body>
+</html>
+```
         © 2026 Saffet Aydın · Kişisel Web Sitesi
     </div>
 </footer>
